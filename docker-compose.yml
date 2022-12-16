@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  mongoDB_Adrian:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      ODM:
+        ipv4_address: 172.10.0.2
+    command: ["mongod"]
+  node_Adrian:
+    container_name: node
+    image: node
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./start.sh:/start.sh
+    networks:
+      ODM:
+        ipv4_address: 172.10.0.3
+    command: ["./start_sim.sh"]
+
+networks:
+  ODM:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.10.0.0/24
+          gateway: 172.10.0.1
