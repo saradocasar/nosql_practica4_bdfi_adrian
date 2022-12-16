@@ -2,7 +2,7 @@
 user.json
 node_modules/
 data/
-.env
+#.env
 *.log
 *.sqlite
 *.pem
