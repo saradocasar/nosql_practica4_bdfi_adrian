@@ -14,6 +14,8 @@ services:
     image: node
     ports:
       - "8001:8001"
+    environment:
+      MONGO_IP: ${MONGO_IP}
     volumes:
       - ./scripts/start_app.sh:/scripts/start_app.sh
     networks:

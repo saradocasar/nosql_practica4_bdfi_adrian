@@ -6,10 +6,13 @@ const PatientController = require('./controllers/patient');
 
 const app = express();
 
+const MONGO_IP = process.env.MONGO_IP;
+
 const mongoose = require('mongoose');
 (async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/hospitales_Adrian',{ useNewUrlParser: true, useUnifiedTopology: true })
+    //await mongoose.connect('mongodb://localhost:27017/hospitales_Adrian',{ useNewUrlParser: true, useUnifiedTopology: true })
+	await mongoose.connect('mongodb://'+ MONGO_IP +':27017/hospitales_Adrian',{ useNewUrlParser: true, useUnifiedTopology: true })
     console.log('Connected to Mongo!')
   } catch (err) {
     console.log('Error connecting to Database: ' + err)
